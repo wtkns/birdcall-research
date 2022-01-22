@@ -1,6 +1,7 @@
 # birdsong #
 
-## 1/21: Initial commit ##   
+## milestones ##
+### 1/21: Initial commit ###   
 * created repo
 * added /sc/[hansm-bird.scd](https://fredrikolofsson.com/f0blog/hansm-bird/) from fredrik olofsson
 * set up python 3.10 virtual environment

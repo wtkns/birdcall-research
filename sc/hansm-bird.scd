@@ -5,6 +5,7 @@ SC port by redFrik 080430
 */
 s.boot;
 
+
 (
 SynthDef(\birdCall, {|
   out= 0, pan= 0, gate= 1, freq= 0, amp= 0.5, atk= 0.5, dcy= 0.5,
@@ -31,6 +32,8 @@ f= {|freq, atk, dcy, fmod1, atkf1, dcyf1, fmod2, atkf2, dcyf2, amod1, atka1, dcy
     \amod2, amod2, \atka2, atka2, \dcya2, dcya2]);
 };
 )
+
+
 (
 //triple-tailed-tree-troubler
 f.value(0.387755, 0.0204082, 0.204082,
@@ -39,6 +42,7 @@ f.value(0.387755, 0.0204082, 0.204082,
   0.571429, 0.367347, 0.22449,
   0.0204082, 0.183673, 0.44898);
 )
+
 (
 //speckled-throated-spew
 f.value(0.183673, 0.591837, 0.387755,

@@ -22,3 +22,6 @@ _to use requirements.txt:_
 `pip install -r requirements.txt`
 
 
+in /sc try eg: `sclang.exe .\nrtTest.scd testing 5`
+be sure sclang.exe is in Path
+

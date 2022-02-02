@@ -7,6 +7,13 @@
 * set up python 3.10 virtual environment
 * installed scikit-image
 
+### 1/28: testing NRT and command line arguments ###
+* added /sc/nrtTest.scd   
+### 2/2: converting hansm-bird to NRT ###   
+* added hansm-bird-nrt.scd
+* added nrttest.bat
+* added example-birds.txt
+
 ## configuration notes ##
 
 _set up venv in vscode:_

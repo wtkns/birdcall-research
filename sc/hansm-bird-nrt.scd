@@ -3,47 +3,27 @@ hansm-bird-control.pd
 http://obiwannabe.co.uk/tutorials/html/tutorial_birds.html
 SC port by redFrik 080430
 */
+var myPath = "./output/" ++ thisProcess.argv[0] ++ ".wav";
+var argfreq = thisProcess.argv[1];
+var argatk = thisProcess.argv[2];
+var argdcy = thisProcess.argv[3];
+var argfmod1 = thisProcess.argv[4];
+var argatkf1 = thisProcess.argv[5];
+var argdcyf1 = thisProcess.argv[6];
+var argfmod2 = thisProcess.argv[7];
+var argatkf2 = thisProcess.argv[8];
+var argdcyf2 = thisProcess.argv[9];
+var argamod1 = thisProcess.argv[10];
+var argatka1 = thisProcess.argv[11];
+var argdcya1 = thisProcess.argv[12];
+var argamod2 = thisProcess.argv[13];
+var argatka2 = thisProcess.argv[14];
+var argdcya2 = thisProcess.argv[15];
 
 var server = Server(\nrt,
     options: ServerOptions.new
     .numOutputBusChannels_(2)
 );
-
-var myPath = "./output/" ++ thisProcess.argv[0] ++ ".wav";
-
-//var myPath = "./output/nrtsongtest.wav";
-// var freq =0.387755;
-// var atk=0.0204082;
-// var dcy=0.204082;
-// var fmod1=0.367347;
-// var atkf1=0.571429;
-// var dcyf1=0.734694;
-// var fmod2=0.918367;
-// var atkf2=1;
-// var dcyf2=0.77551;
-// var amod1=0.571429; 
-// var atka1=0.367347; 
-// var dcya1=0.22449;
-// var amod2=0.0204082; 
-// var atka2=0.183673; 
-// var dcya2=0.44898;
-
-var freq = thisProcess.argv[1];
-var atk = thisProcess.argv[2];
-var dcy = thisProcess.argv[3];
-var fmod1 = thisProcess.argv[4];
-var atkf1 = thisProcess.argv[5];
-var dcyf1 = thisProcess.argv[6];
-var fmod2 = thisProcess.argv[7];
-var atkf2 = thisProcess.argv[8];
-var dcyf2 = thisProcess.argv[9];
-var amod1 = thisProcess.argv[10];
-var atka1 = thisProcess.argv[11];
-var dcya1 = thisProcess.argv[12];
-var amod2 = thisProcess.argv[13];
-var atka2 = thisProcess.argv[14];
-var dcya2 = thisProcess.argv[15];
-
 
 var birdsynth = SynthDef(\birdCall, {|
 			out= 0, pan= 0, gate= 1, freq= 0, amp= 0.5, atk= 0.5, dcy= 0.5,
@@ -66,17 +46,32 @@ var birdsynth = SynthDef(\birdCall, {|
 
 a = Score([
     [0.0, ['/d_recv',birdsynth.asBytes]],
-    [0.0, (x = Synth.basicNew(\birdCall, server, 1000)).newMsg(args: 
-	[\freq, freq, \atk, atk, \dcy, dcy,
-    \fmod1, fmod1, \atkf1, atkf1, \dcyf1, dcyf1,
-    \fmod2, fmod2, \atkf2, atkf2, \dcyf2, dcyf2,
-    \amod1, amod1, \atka1, atka1, \dcya1, dcya1,
-    \amod2, amod2, \atka2, atka2, \dcya2, dcya2]
-	
-	)],
+    [0.0, (x = Synth.basicNew(\birdCall, server)).newMsg(
+		args: [freq: argfreq, atk: argatk, dcy: argdcy,
+		fmod1: argfmod1, atkf1: argatkf1, dcyf1: argdcyf1,
+		fmod2: argfmod2, atkf2: argatkf2, dcyf2: argdcyf2,
+		amod1: argamod1, atka1: argatka1, dcya1: argdcya1,
+		amod2: argamod2, atka2: argatka2, dcya2: argdcya2]
+		)],
     [1.0, x.freeMsg]
 ]);
 
+// myPath.postln;
+// argfreq.postln;
+// argatk.postln;
+// argdcy.postln;
+// argfmod1.postln;
+// argatkf1.postln;
+// argdcyf1.postln;
+// argfmod2.postln;
+// argatkf2.postln;
+// argdcyf2.postln;
+// argamod1.postln;
+// argatka1.postln;
+// argdcya1.postln;
+// argamod2.postln;
+// argatka2.postln;
+// argdcya2.postln;
 
 
 a.recordNRT(

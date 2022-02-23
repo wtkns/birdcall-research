@@ -1,12 +1,11 @@
 (
   var server = Server(\nrt,
       options: ServerOptions.new
-      .numOutputBusChannels_(2)
-  );
-​
+      .numOutputBusChannels_(2));​
+ 
   var fileName = thisProcess.argv[0];
-
-  var fileFreq = thisProcess.argv[1];
+  var fileFreq = thisProcess.argv[1].asFloat;
+  var fileDur = thisProcess.argv[2].asFloat;
 
   var path = "./output/" ++ fileName ++ ".wav";
 
@@ -15,8 +14,8 @@
 
   var myScore = Score(
     [[0.0, ['/d_recv', myDef ]],
-    [0.0, (x = Synth.basicNew(\NRTsine, server, 1000)).newMsg(args: [freq: 400])],
-    [1.0, x.freeMsg]
+    [0.0, (x = Synth.basicNew(\NRTsine, server, fileFreq)).newMsg(args: [freq: fileFreq])],
+    [fileDur, x.freeMsg]
   ]);
 ​
   r = Routine.new({
